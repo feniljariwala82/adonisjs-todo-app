@@ -1,0 +1,50 @@
+@layout('layouts/main')
+@set('title', 'Show')
+
+@section('content')
+<div class="container">
+
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{{ route('tasks.index') }}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Show</li>
+    </ol>
+  </nav>
+
+  <div class="row p-2 justify-content-center">
+    <div class="col-12 col-md-6 card p-4">
+
+      <p class="title fs-4 fw-bold">Title</p>
+      <p class="fw-normal text-capitalize">{{ task.title }}</p>
+      <hr>
+
+      <p class="title fs-4 fw-bold">Desciption</p>
+      <p class="fw-normal text-capitalize">{{ task.description }}</p>
+      <hr>
+
+      <p class="title fs-4 fw-bold">Priority</p>
+      <div>
+        @if(task.priority==='important')
+        <span class="badge bg-success fs-6">{{ task.priority }}</span>
+        @endif
+
+        @if(task.priority==='urgent')
+        <span class="badge bg-danger fs-6">{{ task.priority }}</span>
+        @endif
+
+        @if(task.priority==='unimportant')
+        <span class="badge bg-secondary fs-6">{{ task.priority }}</span>
+        @endif
+
+        @if(task.priority==='future_scope')
+        <span class="badge bg-info fs-6">{{ task.priority }}</span>
+        @endif
+      </div>
+      <hr>
+
+
+    </div>
+  </div>
+
+</div>
+@endsection

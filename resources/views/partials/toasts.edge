@@ -1,0 +1,79 @@
+@if(flashMessages.has('success'))
+<div class="toast align-items-center text-white bg-success border-0 position-fixed top-0 end-0 m-3" role="alert"
+  aria-live="assertive" aria-atomic="true" id="successToast">
+  <div class="d-flex">
+    <div class="toast-body">
+      {{ flashMessages.get('success') }}
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+      aria-label="Close"></button>
+  </div>
+</div>
+
+<script type="module">
+  var toastLiveExample = document.getElementById('successToast')
+  var toast = new Toast(toastLiveExample)
+  toast.show()
+
+</script>
+@endif
+
+@if(flashMessages.has('info'))
+<div class="toast align-items-center text-white bg-info border-0 position-fixed top-0 end-0 m-3" role="alert"
+  aria-live="assertive" aria-atomic="true" id="infoToast">
+  <div class="d-flex">
+    <div class="toast-body">
+      {{ flashMessages.get('info') }}
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+      aria-label="Close"></button>
+  </div>
+</div>
+
+<script type="module">
+  var toastLiveExample = document.getElementById('infoToast')
+  var toast = new Toast(toastLiveExample)
+  toast.show()
+
+</script>
+@endif
+
+@if(flashMessages.has('warning'))
+<div class="toast align-items-center text-white bg-warning border-0 position-fixed top-0 end-0 m-3" role="alert"
+  aria-live="assertive" aria-atomic="true" id="warningToast">
+  <div class="d-flex">
+    <div class="toast-body">
+      {{ flashMessages.get('warning') }}
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+      aria-label="Close"></button>
+  </div>
+</div>
+
+<script type="module">
+  var toastLiveExample = document.getElementById('warningToast')
+  var toast = new Toast(toastLiveExample)
+  toast.show()
+
+</script>
+@endif
+
+@if(flashMessages.has('error'))
+<div class="toast align-items-center text-white bg-danger border-0 position-fixed top-0 end-0 m-3" role="alert"
+  aria-live="assertive" aria-atomic="true" id="dangerToast">
+  <div class="d-flex">
+    <div class="toast-body">
+      {{ flashMessages.get('error') }}
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+      aria-label="Close"></button>
+  </div>
+</div>
+
+<script type="module">
+  var toastLiveExample = document.getElementById('dangerToast')
+  var toast = new Toast(toastLiveExample)
+  toast.show()
+
+</script>
+@endif

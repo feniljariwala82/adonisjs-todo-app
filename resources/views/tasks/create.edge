@@ -1,0 +1,63 @@
+@layout('layouts/main')
+@set('title', 'Create')
+
+@section('content')
+
+<div class="container">
+
+  <h4 class="mb-4 fs-4 fw-bold text-center mt-5">Create Task</h4>
+
+  <div class="d-flex flex-column align-items-center">
+
+    <div class="col-12 col-md-5 col-lg-4 col-xl-3">
+      <form action="{{ route('tasks.store') }}" method="post">
+
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control {{flashMessages.has('errors.title') ? 'is-invalid':''}}"
+            id="floatingInput" placeholder="name@example.com" name="title" value="{{ flashMessages.get('title', '') }}">
+          <label for="floatingInput">Task Title</label>
+          @if(flashMessages.has('errors.title'))
+          <p class="fs-6 text-danger mb-0">
+            {{ flashMessages.get('errors.title') }}
+          </p>
+          @endif
+        </div>
+
+        <div class="form-floating mb-3">
+          <textarea class="form-control {{flashMessages.has('errors.description') ? 'is-invalid':''}}"
+            id="floatingInput" name="description" value="{{ flashMessages.get('description', '') }}"
+            style="height:120px;"></textarea>
+          <label for="floatingInput">Task Description</label>
+          @if(flashMessages.has('errors.description'))
+          <p class="fs-6 text-danger mb-0">
+            {{ flashMessages.get('errors.description') }}
+          </p>
+          @endif
+        </div>
+
+        <div class="form-floating">
+          <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="priority">
+            <option selected>None</option>
+            <option value="important">Important</option>
+            <option value="urgent">Urgent</option>
+            <option value="unimportant">Unimportant</option>
+            <option value="future_scope">Future Scope</option>
+          </select>
+          <label for="floatingSelect">Select Task Priority</label>
+          @if(flashMessages.has('errors.priority'))
+          <p class="fs-6 text-danger mb-0">
+            {{ flashMessages.get('errors.priority') }}
+          </p>
+          @endif
+        </div>
+
+        <div class="mt-2">
+          <button type="submit" class="btn btn-primary">Create Task</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+@endsection

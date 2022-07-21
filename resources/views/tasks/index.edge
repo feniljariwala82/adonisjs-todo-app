@@ -1,0 +1,62 @@
+@layout('layouts/main')
+@set('title', 'Tasks')
+
+@section('content')
+
+<div class="container">
+  <div class="row">
+
+    @each(task in tasks)
+    <div class="col-12 col-md-6 col-lg-4 g-3">
+      <div class="card p-4" style="width:18 rem;">
+        <p class="text-capitalize fs-3 fw-bold">
+          {{ task.title }}
+        </p>
+        <p class="text-capitalize text-muted fs-5">
+          {{ task.description.slice(0, 100) }} .....
+        </p>
+
+        <div>
+
+          @if(task.priority==='important')
+          <span class="badge bg-success fs-6">{{ task.priority }}</span>
+          @endif
+
+          @if(task.priority==='urgent')
+          <span class="badge bg-danger fs-6">{{ task.priority }}</span>
+          @endif
+
+          @if(task.priority==='unimportant')
+          <span class="badge bg-secondary fs-6">{{ task.priority }}</span>
+          @endif
+
+          @if(task.priority==='future_scope')
+          <span class="badge bg-info fs-6">{{ task.priority }}</span>
+          @endif
+
+        </div>
+
+        <div class="mt-4">
+          <div class="btn-group">
+            <a type="button" class="btn btn-info me-2" href="{{ route('tasks.show', { id: task.id }) }}">Show</a>
+            <a type="button" class="btn btn-warning me-2" href="{{ route('tasks.edit', { id: task.id }) }}">Edit</a>
+            <form action="{{ route('tasks.destroy', {id: task.id}, {qs: {_method:'DELETE'} } ) }}" method="post">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    @else
+    <div class=" text-center">
+      <p class="fs-4">You don't have any tasks to do. Please create some by clicking here.</p>
+      <a href="{{ route('tasks.create') }}">Create</a>
+    </div>
+    @endeach
+
+
+  </div>
+</div>
+
+@endsection
